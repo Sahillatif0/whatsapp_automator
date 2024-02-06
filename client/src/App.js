@@ -1,10 +1,12 @@
 import './App.css';
-import Login from './components/login';
+import { Dashboard } from './components/Dashboard';
+import { QRscan } from './components/QRscan';
+
 function App() {
-  // let apps="sahil";
   return (
     <div className="App">
-      <Login apps="sahil"></Login>
+      {/* <QRscan/> */}
+      <Dashboard/>
     </div>
   );
 }
