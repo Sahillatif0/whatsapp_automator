@@ -3,14 +3,14 @@ const Sidebar = () => {
   return (
     <div className='sidebar d-flex flex-dir-col'>
         <div className='sidebar-box1 d-flex flex-dir-col'>
-        <div className="active-sidebar" style={{display: 'flex'}}></div><i title="Chats" className="fal boxEffect fa-comment-dots active-element"></i>
-        <div className="active-sidebar"></div><i title="Calls" className="fal boxEffect fa-phone"></i>
-        <div className="active-sidebar"></div><i title="Status" className="fal boxEffect fa-spinner"></i>
+        <div className="active-sidebar" style={{display: 'flex'}}></div><div className="boxEffect active-element"><i title="Chats" className="fal fa-comment-dots"></i><span className='notify-num'>5</span></div>
+        <div className="active-sidebar"></div><div className="boxEffect"><i title="Calls" className="fal fa-phone"></i></div>
+        <div className="active-sidebar"></div><div className="boxEffect"><i title="Status" className="fal fa-spinner"></i></div>
         </div>
         <div className='sidebar-box2 d-flex flex-dir-col'>
-        <div className="active-sidebar"></div><i title="Starred messages" className="fal boxEffect fa-star"></i>
-        <div className="active-sidebar"></div><i title="Archived chats" className="fal boxEffect fa-box-archive"></i>
-        <div className="active-sidebar"></div><i title="Settings" className="fal boxEffect fa-gear"></i>
+        <div className="active-sidebar"></div><div className="boxEffect"><i title="Starred messages" className="fal fa-star"></i></div>
+        <div className="active-sidebar"></div><div className="boxEffect"><i title="Archived chats" className="fal fa-box-archive"></i></div>
+        <div className="active-sidebar"></div><div className="boxEffect"><i title="Settings" className="fal fa-gear"></i></div>
         <div className="profile_box boxEffect"><div title="Profile" className='profile_pic'></div></div>
         </div>
     </div>

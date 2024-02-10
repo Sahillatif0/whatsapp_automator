@@ -2,6 +2,7 @@
     box-sizing: border-box;
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    scroll-behavior: smooth;
 }
 body{
     margin: 0;
@@ -91,6 +92,7 @@ body{
 }
 .messages-container{
     background: url(../../public/message-con-bg.png);
+    /* background: url(../pf.png); */
     width: 100%;
     height: calc(100% - 120px);
     padding: 20px 200px;
@@ -108,10 +110,21 @@ i{
     color: white;
 }
 .boxEffect{
+    position: relative;
     cursor: pointer;
     border-radius: 10px;
-    padding: 13px 12px;
+    padding: 12px 14px;
     margin: 3px auto;
+}
+.notify-num{
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    background: #1daa61;
+    color: black;
+    font-size: small;
 }
 .profile_box{
     margin-bottom: 20px;
@@ -248,13 +261,14 @@ i{
     align-items: center;
 }
 .message-box-icons-box i{
-    font-size: 15px;
+    font-size: 17px;
 }
 .message-box-icons-box:hover{
     background: #9f9f9f38;
 }
 .message-input{
     width: calc(100% - 150px);
+    margin-left: 20px;
 }
 .message-input input{
     width: 100%;
@@ -265,6 +279,54 @@ i{
 .disp-non{
     display: none;
 }
+.emoji-picker{
+    position: absolute;
+    bottom: 50px;
+}
+@keyframes emojiAnim{
+    
+    0% {height: 230px;}
+    100% {height: 435px;}
+}
+.emoji-picker *{
+    height: 435px;
+    animation: emojiAnim ease 1s;
+}
+@keyframes mediaAnim{
+    0%{height: 0px;}
+    100%{height: 220px;}
+}
+.media-options-box{
+    position: absolute;
+    bottom: 50px;
+    width: 170px;
+    height: 220px;
+    background-color: var(--backgroundClr);
+    border-radius: 10px;
+    padding: 10px;
+    animation: mediaAnim ease .5s;
+    box-shadow: 0px 3px 6px #1f1f1f;
+}
+.media-options{
+    align-items: center;
+    padding: 8px;
+    border-radius: 5px;
+    height: max-content;
+}
+.media-options *{
+    font-size: 15px;
+    color: white;
+}
+.media-icons{
+    height: 100%;
+    width: 27px;
+}
+.media-options p{
+    margin: 0px;
+}
+.media-options:hover{
+    background-color: #454545;
+}
 .message-place{
     width: 100%;
     height: auto;
@@ -273,7 +335,7 @@ i{
 }
 .chat-message{
     position: relative;
-    align-items: center;
+    /* align-items: center; */
     height: auto;
     border-radius: 10px;
     width: max-content;
@@ -319,21 +381,30 @@ i{
 font-size: 20px;
 }
 .time_and_status{
+    position: absolute;
     width: max-content;
     min-width: 36px;
+    right: 10px;
+    bottom: 5px;
     align-items: flex-end;
 }
 .message-time,.time_and_status i{
     font-size: 10px;
     margin: 0px 5px;
 }
-.sent-message .time_and_status i,.sent-message .time_and_status p{
+.message-read *{
+    color: #53bdeb;
+}
+.message-del *{
+    color: #b5ece288;
+}
+.sent-message .time_and_status span,.sent-message .time_and_status p{
     color: #b5ece288;
 }
 .received-message .time_and_status p{
     color: #e2e2e29a;
 }
-.received-message .time_and_status i{
+.received-message .time_and_status span{
     display: none;
 }
 .message-text{
@@ -348,6 +419,66 @@ font-size: 20px;
 }.message-text a:hover{
     color: #92f3cb;
 }
+.quoted-message-box{
+    position: relative;
+    height: max-content;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: content-box;
+    background-color: #1b6b5d;
+    box-shadow: inset 2px 2px 2px #055848;
+    border-radius: 5px;
+}
+.quote-message-other{
+    background-color: #494949;
+    box-shadow: inset 2px 2px 2px var(--textWhite);
+}
+.quoted-message-box a{
+    text-decoration: none;
+}
+.quoted-message-box::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 96%;
+    top: 2px;
+    left: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.quote-message-mine::before{
+background-color: #06cf9c;
+}
+.quote-message-other::before{
+background-color: #53bdeb;
+}
+.quote-message-mine *{
+    color: #06cf9c;
+}
+.quote-message-other *{
+    color: #06cf9c;
+}
+.quoted-message{
+    color: var(--textWhite);
+}
+.is-link{
+    color: #92e0f3;
+}
+.quoted-image{
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+}
+.quoted-image-box i{
+    font-size: 12px;
+    margin: 5px;
+    align-self: flex-start;
+}
+.quoted-image-box{
+    align-items: center;
+    justify-content: space-between;
+}
 .message-img{
     width: 300px;
     height: 300px;
@@ -357,6 +488,7 @@ font-size: 20px;
 }
 .img-caption-box{
     justify-content: space-between;
+    max-width: 300px;
 }
 .message-caption{
     margin: 5px 0px;
